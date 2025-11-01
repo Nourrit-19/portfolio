@@ -27,7 +27,12 @@
       </nav>
     </div>
   </header>
-    
+    <div class="card">
+  <h3>Table tp</h3>
+  <p>3D interactive table </p>
+  <div id="viewer" style="width: 400px; height: 400px;"></div>
+</div>
+
  <!-- Footer -->
  <footer class="site-footer">
     <div class="container">
@@ -37,5 +42,40 @@
 
   <!-- Script -->
   <script src="script.js"></script>
+  <!--  Three.js -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.153.0/examples/js/loaders/GLTFLoader.js"></script>
+<script>
+  // إعداد المشهد والكاميرا
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(500, 500);
+  document.getElementById('viewer').appendChild(renderer.domElement);
+
+  // إضافة إضاءة
+  const light = new THREE.DirectionalLight(0xffffff, 1);
+  light.position.set(5, 10, 7.5);
+  scene.add(light);
+
+  // تحميل ملف glTF
+  const loader = new THREE.GLTFLoader();
+  loader.load('tqbletrue.glb', function(gltf) {
+      scene.add(gltf.scene);
+      gltf.scene.rotation.y = 0; // تقدر تعدل للدوران
+  });
+
+  camera.position.z = 5;
+
+  // أنيميشن لتحديث المشهد
+  function animate() {
+      requestAnimationFrame(animate);
+      scene.rotation.y += 0.005; // يدور الطاولة ببطء
+      renderer.render(scene, camera);
+  }
+  animate();
+</script>
+
 </body>
+
 </html>
