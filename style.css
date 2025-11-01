@@ -109,4 +109,9 @@
     .hero-left{order:1}
     .profile-wrap{width:200px;height:200px}
   }
+#viewer {
+  width: 500px;
+  height: 400px;
+}
+
   
