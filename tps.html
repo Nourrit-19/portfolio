@@ -11,6 +11,82 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
+  <style>
+.downloads {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.downloads h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+/* حاوية الكاردات */
+.download-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* تصميم كل كارد */
+.card {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* أيقونات مشابهة لـ contact.html */
+.icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 15px auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  color: white;
+}
+
+/* ألوان لكل نوع ملف */
+.icon-glb { background-color: #4CAF50; }
+.icon-image { background-color: #2196F3; }
+.icon-blend { background-color: #FF9800; }
+.icon-pdf { background-color: #F44336; }
+
+/* إضافة نص داخل الأيقونات (اختياري) */
+.icon-glb::before { content: "3D"; font-weight: bold; }
+.icon-image::before { content: "🖼️"; font-size: 20px; }
+.icon-blend::before { content: "BL"; font-weight: bold; }
+.icon-pdf::before { content: "PDF"; font-weight: bold; }
+
+/* زر الdownload */
+.btn {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #ff7f50;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: #ff4f20;
+}
+</style>
 </head>
 <body>
 
@@ -27,11 +103,64 @@
       </nav>
     </div>
   </header>
+    
+<section class="downloads">
+  <h2> Tp2: Table </h2>
+  <div class="download-cards">
+
     <div class="card">
-  <h3>Table </h3>
-  <p>3D interactive table </p>
-  <div id="viewer" style="width: 400px; height: 400px;"></div>
-</div>
+      <div class="icon icon-glb"></div>
+      <h3> 3D (.glb)</h3>
+      <a href="table.glb" download class="btn">download</a>
+    </div>
+
+    <div class="card">
+      <div class="icon icon-image"></div>
+      <h3>photo</h3>
+      <a href="table.png" download class="btn">download</a>
+    </div>
+
+    <div class="card">
+      <div class="icon icon-blend"></div>
+      <h3> Blender (.blend)</h3>
+      <a href="table.blend" download class="btn">download</a>
+    </div>
+
+   
+
+  </div>
+</section>
+<section class="downloads">
+  <h2> Tp3: La scene </h2>
+  <div class="download-cards">
+
+    <div class="card">
+      <div class="icon icon-glb"></div>
+      <h3> 3D (.glb)</h3>
+      <a href="boxring2.glb" download class="btn">download</a>
+    </div>
+
+    <div class="card">
+      <div class="icon icon-image"></div>
+      <h3>photo</h3>
+      <a href="boxring2.png" download class="btn">download</a>
+    </div>
+
+    <div class="card">
+      <div class="icon icon-blend"></div>
+      <h3> Blender (.blend)</h3>
+      <a href="boxring.blend" download class="btn">download</a>
+    </div>
+
+    <div class="card">
+      <div class="icon icon-pdf"></div>
+      <h3>Rpport</h3>
+      <a href="fichier.pdf" download class="btn">download</a>
+    </div>
+
+  </div>
+</section>
+
 
  <!-- Footer -->
  <footer class="site-footer">
@@ -60,7 +189,7 @@
   const ambient = new THREE.AmbientLight(0xcccccc, 0.5);
 scene.add(ambient);
 
-  // تحميل ملف glTF
+  // download ملف glTF
   const loader = new THREE.GLTFLoader();
   loader.load('tablew.glb', function(gltf) {
       scene.add(gltf.scene);
@@ -83,6 +212,5 @@ scene.add(ambient);
 </body>
 
 </html>
-
 
 
